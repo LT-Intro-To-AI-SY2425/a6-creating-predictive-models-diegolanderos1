@@ -16,7 +16,8 @@ y = data["Blood Pressure"].values
 
 # Use reshape to turn the x values into 2D arrays:
 # xtrain = xtrain.reshape(-1,1)
-
+x = x.reshape(-1.1)
+xtrain, xtest, ytrain, ytest = train_test_split()
 # Create the model
 
 # Find the coefficient, bias, and r squared values. 
