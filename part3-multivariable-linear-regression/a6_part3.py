@@ -11,14 +11,14 @@ y = data["Price"].values
 
 #split the data into training and testing data
 xtrain, xtest, ytrain, ytest = train_test_split(x, y, test_size = .2)
+#xtrain = xtrain.reshape(-1,1)
 #create linear regression model
 model = LinearRegression().fit(xtrain, ytrain)
 #Find and print the coefficients, intercept, and r squared values. 
 #Each should be rounded to two decimal places. 
-coef = np.around(model.coef_, 2)
+coef = np.around(model.coef_,2)
 intercept = round(float(model.intercept_), 2)
 r_squared = round(model.score(x, y),2)
-
 print(f"Model's Linear Equation: y={coef[0]}x1 + {coef[1]}x2 + {coef[2]}x3 + {intercept}")
 print("R Squared value:", r_squared)
 
@@ -33,7 +33,7 @@ input_data = np.array([[miles, age, year]])
 predicted_price = model.predict(input_data)
 
 # Output the predicted price
-print(f"The predicted price for a {age}-year-old car with {miles} miles (model year {year}) is ${predicted_price[0]:,.2f}.")
+print(f"The predicted price for a {age}-year-old car with {miles} miles (model year {year}) is ${predicted_price[0]}.")
 
 #Loop through the data and print out the predicted prices and the 
 #actual prices
@@ -41,7 +41,7 @@ print("***************")
 print("Testing Results")
 predict = model.predict(xtest)
 predict = np.around(predict, 2)
-
+print("\nTesting Multivariable Model with Testing Data")
 for index in range(len(xtest)):
     actual = ytest[index]  
     predicted_y = predict[index] 
