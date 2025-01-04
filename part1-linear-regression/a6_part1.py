@@ -28,7 +28,7 @@ prediction = model.predict([[x_predict]])
 print(f"Prediction when x is {x_predict}: {prediction}")
 # Create the model in matplotlib and include the line of best fit
 
-plt.figure(figsize=(6.4))
+plt.figure(figsize=(6.4,4.8))
 plt.scatter(x,y)
 plt.xlabel("Age")
 plt.ylabel("Blood Pressure")
