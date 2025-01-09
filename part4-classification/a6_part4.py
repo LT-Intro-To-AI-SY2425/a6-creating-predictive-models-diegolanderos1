@@ -1,11 +1,13 @@
 import pandas as pd
+import numpy as np
 from sklearn import linear_model
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
 data = pd.read_csv("part4-classification/suv_data.csv")
+print(data)
 data['Gender'].replace(['Male','Female'],[0,1],inplace=True)
-
+print(data)
 x = data[["Age", "EstimatedSalary", "Gender"]].values
 y = data["Purchased"].values
 
@@ -19,19 +21,20 @@ x = scaler.transform(x)
 # Step 4: Split the data into training and testing data
 xTraining, xTest, yTraining, yTest = train_test_split(x,y)
 # Step 5: Fit the data
-
 # Step 6: Create a LogsiticRegression object and fit the data
 model = linear_model.LogisticRegression().fit(xTraining,yTraining)
 # Step 7: Print the score to see the accuracy of the model
-print("Model Score:", model.score(xTest,yTest))
+print("Model Accuracy Score:", model.score(xTest,yTest))
 # Step 8: Print out the actual ytest values and predicted y values
+print("\nTesting Results:\n")
 correct_cases = 0
 for index in range(len(xTest)):
-    obs_x = xTest[index]
-    obs_x = obs_x.reshape(-1,3)
-    print("Personal Information:", obs_x)
-    
-    if model.predict(obs_x) == 1:
+    x = xTest[index]
+    x = x.reshape(-1,3)
+    print("Personal Information:", x)
+    yPred = int(model.predict(x))        
+
+    if yPred == 1:
         pred = True
     else:
         pred = False
@@ -54,7 +57,7 @@ for index in range(len(xTest)):
         correct_cases += 1
     else:
         print("The Model is not Correct")
-    
+    print(f"Predicted: {pred} Actual: {acc}")
     print("-------------------------------------------------------------")
 pcorrect = 100*(correct_cases / len(yTest))
 print("Percentage of Cases Correct:", pcorrect,"%")
