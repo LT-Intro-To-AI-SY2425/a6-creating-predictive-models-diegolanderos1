@@ -35,6 +35,19 @@ predicted_price = model.predict(input_data)
 # Output the predicted price
 print(f"The predicted price for a {age}-year-old car with {miles} miles (model year {year}) is ${predicted_price[0]}.")
 
+miles = 89000
+age = 10
+year = 2024 - age  
+
+# Prepare the input array with the same structure as the training data
+input_data = np.array([[miles, age, year]])
+
+# Make the prediction using the trained model
+predicted_price = model.predict(input_data)
+
+# Output the predicted price
+print(f"The predicted price for a {age}-year-old car with {miles} miles (model year {year}) is ${predicted_price[0]}.")
+
 #Loop through the data and print out the predicted prices and the 
 #actual prices
 print("***************")
