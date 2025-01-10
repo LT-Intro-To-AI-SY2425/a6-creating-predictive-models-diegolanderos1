@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
+import math
 
 data = pd.read_csv("part1-linear-regression/blood_pressure_data.csv")
 x = data["Age"].values
@@ -33,6 +34,8 @@ plt.scatter(x,y)
 plt.xlabel("Age")
 plt.ylabel("Blood Pressure")
 plt.title("Blood Pressure by Age")
+plt.scatter(x,y)
 plt.plot(x,coef*x + intercept,c="r",label="Line of Best Fit")
+
 plt.legend()
 plt.show()
